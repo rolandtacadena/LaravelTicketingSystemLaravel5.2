@@ -6,13 +6,13 @@
         <div class="large-2 columns profile-container-left">
             <div class="profile">
                 <div class="profile-img">
-                    @if(!Auth::user()->profile_photo)
+                    @if(!$user->profile_photo)
                         <img src="{{ URL::asset('img/user/profile-pics/default-img-profile.png') }}" alt=""/>
                     @else
-                        <img src="{{ URL::asset('img/user/profile-pics/' . Auth::user()->profile_photo) }}" alt=""/>
+                        <img src="{{ URL::asset('img/user/profile-pics/' . $user->profile_photo) }}" alt=""/>
                     @endif
                 </div>
-                @if(!Auth::user()->profile_photo)
+                @if(!$user->profile_photo)
                     <div class="upload-photo">
                         <form method="post" action="{{ url('user/profile/upload-photo') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -24,8 +24,8 @@
                 <div class="profile-details">
                     <div class="personal-info">
                         <ul>
-                            <li><b>{{ Auth::user()->name }}</b></li>
-                            <li>Role: <b>{{ Auth::user()->role }}</b></li>
+                            <li><b>{{ $user->name }}</b></li>
+                            <li>Role: <b>{{ $user->role }}</b></li>
                         </ul>
                     </div>
                     <hr/>

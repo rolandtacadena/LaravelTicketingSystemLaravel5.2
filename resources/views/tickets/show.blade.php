@@ -40,11 +40,11 @@
         <div class="update-ticket">
             <div class="ticket-form">
                 {!! Form::model($ticket, ['method' => 'PATCH', 'action' => ['TicketsController@update', $ticket->id]]) !!}
-                @include('tickets.form', ['submiButtonText' => 'Update Article', 'formLabel' => 'Edit Article', 'ticket_action' => 'edit'])
+                @include('tickets.form', ['submiButtonText' => 'Update Ticket', 'formLabel' => 'Edit Ticket', 'ticket_action' => 'edit'])
                 {!! Form::close() !!}
             </div>
         </div>
-        @if(Auth::check())
+        @if($isLoggedIn)
             <div class="form-ticket-comment">
                 {!! Form::model($comment = new \App\Comment, ['action' => ['CommentsController@store', $ticket->id]]) !!}
                     {!! Form::hidden('ticket_action', 'comment') !!}

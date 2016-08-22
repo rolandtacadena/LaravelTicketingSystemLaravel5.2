@@ -19,6 +19,22 @@ class User extends Authenticatable
         'password',
     ];
 
+    /*
+    * Name attribute accessor.
+    */
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    /*
+     * Title attribute mutator.
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
     /**
      * The attributes excluded from the model's JSON form.
      *

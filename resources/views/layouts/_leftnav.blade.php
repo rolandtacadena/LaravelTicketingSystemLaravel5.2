@@ -3,7 +3,9 @@
     <!-- for backlogs -->
     <ul id="actions" class="side-nav">
         <li class="title">ACTIONS</li>
-        <li><a href="{{ route('create_ticket') }}">Create A New Ticket <i class="icons fi-page-add right"></i></a></li>
+        @if($isLoggedIn)
+            <li><a href="{{ route('create_ticket') }}">Create A New Ticket <i class="icons fi-page-add right"></i></a></li>
+        @endif
     </ul>
 
     <ul style="padding: 0;" class="side-nav"><li class="divider"></li></ul>
@@ -22,8 +24,8 @@
     <ul id="ticket-special" class="side-nav">
 
         <li class="title">SPECIAL FILTERS</li>
-        @if(Auth::check())
-            <li><a href="{{ route('tickets_by_user', Auth::user()->id) }}">My Tickets<span class="label right">{{ Auth::user()->tickets()->count() }}</span></a></li>
+        @if($isLoggedIn)
+            <li><a href="{{ route('tickets_by_user', $user->id) }}">My Tickets<span class="label right">{{ $user->tickets()->count() }}</span></a></li>
         @endif
 
         <!-- open, close tickets filter -->

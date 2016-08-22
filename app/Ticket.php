@@ -61,6 +61,22 @@ class Ticket extends Model
         'low'
     ];
 
+    /*
+    * Title attribute accessor.
+    */
+    public function getTitleAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    /*
+     * Title attribute mutator.
+     */
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = strtolower($value);
+    }
+
     /**
      * Return the available types
      *

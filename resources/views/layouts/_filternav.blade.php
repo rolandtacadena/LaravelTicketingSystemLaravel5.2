@@ -5,10 +5,10 @@
             All <span class="label right">{{ $all_tickets_count }}</span>
         </a>
     </dd>
-    @if(Auth::check())
+    @if($isLoggedIn)
         <dd>
-            <a href="{{ route('tickets_by_user', Auth::user()->id) }}">
-                My Ticket(s)<span class="label right">{{ Auth::user()->tickets()->count() }}</span>
+            <a href="{{ route('tickets_by_user', $user->id) }}">
+                My Ticket(s)<span class="label right">{{ $user->tickets()->count() }}</span>
             </a>
         </dd>
     @endif

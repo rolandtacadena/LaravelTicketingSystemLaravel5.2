@@ -16,14 +16,14 @@
                 <li><a href="{{ url('/login') }}">Login</a></li>
                 <li class="divider"></li>
             @else
-            @if(Auth::user()->is_admin())
+            @if($user->is_admin())
             <li class="user-role">
-                {!! link_to_route('admin_area', ucwords(Auth::user()->role)) !!}
+                {!! link_to_route('admin_area', $user->role) !!}
             </li>
             @endif
                 <li class="divider"></li>
                 <li class="has-dropdown">
-                    {!! link_to_route('show_profile', Auth::user()->name) !!}
+                    {!! link_to_route('show_profile', $user->name) !!}
                     <ul class="dropdown">
                         <li>{!! link_to_route('show_profile', 'Profile') !!}</li>
                         <li>{!! link_to_route('user_settings', 'Settings') !!}</li>
