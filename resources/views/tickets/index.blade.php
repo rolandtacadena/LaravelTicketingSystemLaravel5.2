@@ -2,11 +2,13 @@
 
 @section('content')
     <div class="row">
+
         <!-- left nav -->
         @include('layouts._leftnav')
 
         <!--right side navigation-->
         <div id="ticket-table" class="large-10 medium-9 columns">
+
             <!--filter navigation-->
             @include('layouts._filternav')
 
@@ -16,6 +18,7 @@
             <hr/>
 
             @if(count($tickets) > 0)
+
                 <h4 class="subheader">{{ $header }} 
                     <b style="font-size: 20px;">({{ $all_tickets_count }})</b>
                 </h4>
@@ -34,7 +37,9 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     @foreach($tickets as $ticket)
+
                         <tr>
                             <td>{!! link_to_route('show_ticket', $ticket->id, $ticket->id) !!}</td>
                             <td>{!! link_to_route('show_ticket', $ticket->title, $ticket->id) !!}</td>
@@ -46,11 +51,15 @@
                             <td>{!! link_to_route('tickets_by_status', $ticket->status, $ticket->status) !!}</td>
                             <td>{{ $ticket->dev_loe }}</td>
                         </tr>
+
                     @endforeach
+
                     </tbody>
                 </table>
+
                 <!--filter navigation-->
                 @include('layouts._filternav')
+
                 <hr/>
 
                 <!-- render pagination lnks -->
@@ -59,6 +68,8 @@
             @else
                 <h4 class="subheader">Sorry there were no tickets returned.</h4>
             @endif
+
         </div>
     </div>
+
 @endsection

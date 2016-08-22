@@ -6,13 +6,17 @@
         <div class="large-2 columns profile-container-left">
             <div class="profile">
                 <div class="profile-img">
+
                     @if(!$user->profile_photo)
                         <img src="{{ URL::asset('img/user/profile-pics/default-img-profile.png') }}" alt=""/>
                     @else
                         <img src="{{ URL::asset('img/user/profile-pics/' . $user->profile_photo) }}" alt=""/>
                     @endif
+
                 </div>
+
                 @if(!$user->profile_photo)
+
                     <div class="upload-photo">
                         <form method="post" action="{{ url('user/profile/upload-photo') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -20,7 +24,9 @@
                             <input class="button tiny" type="submit" value="Upload Photo"/>
                         </form>
                     </div>
+
                 @endif
+
                 <div class="profile-details">
                     <div class="personal-info">
                         <ul>
@@ -46,6 +52,7 @@
             @include('partials.flash')
 
             @if(count($user_all_tickets) > 0)
+
                 <h4 class="subheader">Your ticket lists</h4>
                 <hr/>
                 <table id="ticket-list">
@@ -62,7 +69,9 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     @foreach($user_all_tickets as $ticket)
+
                         <tr>
                             <td>{!! link_to_route('show_ticket', $ticket->id, $ticket->id) !!}</td>
                             <td>{!! link_to_route('show_ticket', $ticket->title, $ticket->id) !!}</td>
@@ -73,7 +82,9 @@
                             <td>{!! link_to_route('tickets_by_status', $ticket->status, $ticket->status) !!}</td>
                             <td>{{ $ticket->dev_loe }}</td>
                         </tr>
+
                     @endforeach
+
                     </tbody>
                 </table>
 

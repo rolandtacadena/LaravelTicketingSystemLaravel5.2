@@ -44,7 +44,9 @@
                 {!! Form::close() !!}
             </div>
         </div>
+
         @if($isLoggedIn)
+
             <div class="form-ticket-comment">
                 {!! Form::model($comment = new \App\Comment, ['action' => ['CommentsController@store', $ticket->id]]) !!}
                     {!! Form::hidden('ticket_action', 'comment') !!}
@@ -64,9 +66,12 @@
                     </fieldset>
                 {!! Form::close() !!}
             </div>
+
         @else
+
             <p>In order to create comment for this ticket, you must be logged in. <a href="{{ url('auth/login') }}">Log in</a> or
                 <a href="{{ url('auth/register') }}">Register</a></p>
+
         @endif
 
         <div class="comment-list">
@@ -83,13 +88,15 @@
         <!-- delete ticket button -->
         <!-- currently only user with 'admin' role can delete ticket -->
         @can('delete-post', $ticket)
-        {!! Form::open(['method' => 'DELETE', 'action' => ['TicketsController@destroy', $ticket->id]]) !!}
-        <div class="row">
-            <div class="large-12 columns">
-                {!! Form::submit('Delete Ticket', ['class' => 'right button tiny']) !!}
+
+            {!! Form::open(['method' => 'DELETE', 'action' => ['TicketsController@destroy', $ticket->id]]) !!}
+            <div class="row">
+                <div class="large-12 columns">
+                    {!! Form::submit('Delete Ticket', ['class' => 'right button tiny']) !!}
+                </div>
             </div>
-        </div>
-        {!! Form::close() !!}
+            {!! Form::close() !!}
+
         @endcan
 
     </div>

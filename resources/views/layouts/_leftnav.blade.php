@@ -3,9 +3,11 @@
     <!-- for backlogs -->
     <ul id="actions" class="side-nav">
         <li class="title">ACTIONS</li>
+
         @if($isLoggedIn)
             <li><a href="{{ route('create_ticket') }}">Create A New Ticket <i class="icons fi-page-add right"></i></a></li>
         @endif
+
     </ul>
 
     <ul style="padding: 0;" class="side-nav"><li class="divider"></li></ul>
@@ -13,9 +15,11 @@
     <!-- for backlogs -->
     <ul id="backlogs" class="side-nav">
         <li class="title">BACKLOGS</li>
+
         @foreach($backlogs as $backlog)
             <li><a href="{{ route('tickets_by_backlog', $backlog->id) }}">{{ $backlog->name }}<span class="label right">{{ $backlog->tickets()->count() }}</span></a></li>
         @endforeach
+
     </ul>
 
     <ul style="padding: 0;" class="side-nav"><li class="divider"></li></ul>
@@ -24,6 +28,7 @@
     <ul id="ticket-special" class="side-nav">
 
         <li class="title">SPECIAL FILTERS</li>
+
         @if($isLoggedIn)
             <li><a href="{{ route('tickets_by_user', $user->id) }}">My Tickets<span class="label right">{{ $user->tickets()->count() }}</span></a></li>
         @endif

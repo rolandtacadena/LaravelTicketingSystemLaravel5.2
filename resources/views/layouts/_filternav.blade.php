@@ -5,6 +5,7 @@
             All <span class="label right">{{ $all_tickets_count }}</span>
         </a>
     </dd>
+
     @if($isLoggedIn)
         <dd>
             <a href="{{ route('tickets_by_user', $user->id) }}">
@@ -12,6 +13,7 @@
             </a>
         </dd>
     @endif
+
     <dd><a href="{{ route('tickets_by_status', 'open') }}">
             Open Tickets<span class="label right">{{ $open_tickets_count }}</span>
         </a>
